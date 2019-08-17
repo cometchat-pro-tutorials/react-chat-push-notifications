@@ -1,33 +1,430 @@
-.App {
+@import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+@import 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto';
+  color: #333;
+  font-size: 13px;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h3 {
+  font-family: 'Abril Fatface';
+  margin-bottom: 20px;
+}
+
+button {
+  border: none;
+  width: 100%;
+  margin: auto;
+  margin-top: 40px;
+  cursor: pointer;
+  padding: 10px 0;
+  background: #1b47db;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 #cfdfff, 0 6px 20px 0 #cfdfff;
+  font-weight: 700;
+  transform: perspective(1px) translateZ(0);
+}
+
+button:hover {
+  background: #2b57eb;
+}
+
+.login-page {
+  background: url(./assets/login-background.svg) no-repeat center center fixed;
+  background-size: cover;
+  padding-top: 100px;
+  height: 100vh;
+}
+
+.login {
+  background: #fff;
+  margin: auto;
+  display: flex;
+  max-width: 760px;
+  width: calc(100% - 20px);
+  height: 440px;
+  border-radius: 6px;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.login-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 70px;
+}
+
+.login .form-wrapper {
+  position: relative;
+}
+
+label {
+  color: #c9d4d8;
+  font-weight: bold;
+}
+
+.form-wrapper label {
+  margin: 0;
+  color: #bfcdd8;
+}
+
+.form-wrapper #username {
+  border-bottom: 2px solid #e6ecee !important;
+  border-radius: 0 !important;
+  padding-top: 0.375rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.375rem;
+  padding-left: 0;
+}
+
+@media (max-width: 760px) {
+  .login-image-column {
+    display: none;
+  }
+  .login-form-column {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login form {
+    width: 100%;
+  }
+}
+
+.form-wrapper i {
+  position: absolute;
+  bottom: 9px;
+  right: 0;
+}
+
+nav {
+  flex: 1;
+  height: 50px;
+  line-height: 50px;
+  background: #fff;
+  color: black;
+  font-size: 14px;
+  padding: 0 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat {
+  flex: 1;
+  padding-top: 40px;
+  background-color: #204cd2;
+  background-image: url(./assets/chat-background.svg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  width: 100%;
+}
+
+.empty-chat-holder {
+  width: 100%;
+  height: 250px;
+  margin-top: 70px;
+}
+
+.empty-chat {
+  position: relative;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.empty-chat h2 {
+  color: #1546dc;
+  font-family: 'Abril Fatface';
+  padding: 0;
+  font-size: 2rem;
+  margin: 25px auto 15px;
+}
+
+.empty-chat-holder img {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+}
+
+.container {
+  margin: auto;
+  max-width: 800px;
+  width: calc(100% - 20px);
+  height: 588px;
+  font-family: sans-serif;
+  letter-spacing: 0.5px;
+  background: #f8f9fb;
+  padding: 0 !important;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+  border-radius: 7px;
+  box-sizing: border-box;
+  border: 1px solid #bfcdd8;
+}
+
+.chat-header {
+  width: 100%;
+  height: 70px;
+  border-bottom: none;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 7px 7px 0 0;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.active {
+  font-family: 'Roboto';
+  width: 120px;
+  float: left;
+}
+
+.active h5 {
+  padding: 10px;
+  color: #444;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.active h6 {
+  font-size: 10px;
+  line-height: 2px;
+  color: #fff;
+}
+
+.header-icons {
+  width: 120px;
+  float: right;
+  margin-right: 10px;
+}
+
+.header-icons span {
+  line-height: 70px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.header-icons .fa {
+  cursor: pointer;
+  margin: 10px;
+}
+
+.msg-page {
+  height: 516px;
+  overflow-y: auto;
+  padding-bottom: 50px;
+}
+
+.input-group {
+  margin-right: 20px;
+  border-top: 1px solid #dee6eb;
+  width: 100% !important;
+  background-color: #fff;
+  height: 100%;
+  border-radius: 0 0 7px 7px;
+}
+
+.input-group input {
+  height: 100%;
+  background: #fff;
+}
+
+.input-group ::placeholder {
+  color: #c0c0c0 !important;
+}
+
+.form-control {
+  border: none !important;
+  border-radius: 20px !important;
+}
+
+.input-group-text {
+  background: transparent !important;
+  border: none !important;
+}
+
+.input-group .fa {
+  color: #007bff;
+  float: right;
+}
+
+.bottom-icons {
+  float: left;
+  margin-top: 17px;
+  width: 30% !important;
+  margin-left: 22px;
+}
+
+.bottom-icons .fa {
+  color: #fff;
+  padding: 5px;
+}
+
+.form-control:focus {
+  border-color: none !important;
+  box-shadow: none !important;
+  border-radius: 20px;
+}
+
+.msg-footer {
+  border-radius: 0px 0px 10px 10px;
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}
+
+#endofchat {
+  padding-bottom: 50px;
+}
+
+.message-form {
+  height: 100%;
+}
+
+.chat-page {
+  position: relative;
+}
+
+.logo {
+  margin-right: 7px;
+  width: 30px;
+}
+
+.title {
+  font-family: 'Abril Fatface';
+  font-size: 32px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  margin: 10px 50px;
+}
+
+.message-input {
+  padding: 6px 20px;
+}
+
+.empty-chat-sub-title {
   text-align: center;
+  color: #555;
+  font-size: 18px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.loading-messages-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 150px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.loading-text {
+  font-family: 'Roboto';
+  color: #1546dc;
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+.chat-container {
   display: flex;
   flex-direction: column;
+  flex: 1;
+}
+
+.chat-bubble-row {
+  display: flex;
+  padding: 15px 20px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.sender-name {
+  font-size: 14px;
+  font-weight: bold;
+  padding-right: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chat-bubble {
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 20px;
+  position: relative;
+}
+
+.is-user {
+  background-color: #1546DC;
+}
+
+.is-other {
+  background-color: #FFF;
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1)
+}
+
+.chat-bubble.is-user:before {
+  content: '';
+  position: absolute;
+  left: 100%;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-left: 26px solid #1546DC;
+  border-bottom: 13px solid transparent;
+}
+
+.chat-bubble.is-other:before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-right: 26px solid #FFF;
+  border-bottom: 13px solid transparent;
+}
+
+.message-send-icon {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.sending-message-spinner {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
