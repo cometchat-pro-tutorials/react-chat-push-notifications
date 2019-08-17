@@ -50,7 +50,6 @@ class Chat extends React.Component {
           let {chat} = this.state;
           console.log('Incoming Message Log', {message});
           chat.push(message);
-          console.log(chat);
           this.setState({
             chat
           });
@@ -84,11 +83,11 @@ class Chat extends React.Component {
 
     CometChat.sendMessage(textMessage).then(
       message => {
-        // const { chat } = this.state;
-        // chat.push(message);
-        // this.setState({
-        //   chat
-        // })
+        const { chat } = this.state;
+        chat.push(message);
+        this.setState({
+          chat
+        })
         console.log('Message sent successfully:', message);
       },
       error => {
