@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Chat App With Push Notification Using CometChat PRO
 
-## Available Scripts
+This sample app shows how to build a React chat application using CometChat Pro SDK that will send Push Notification using Firebase Cloud Messaging. 
 
-In the project directory, you can run:
+SCREENSHOTS
 
-### `npm start`
+Jump straight into the code or read the accompanying step-by-step guide here on our blog.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technology
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+This demo uses:
 
-### `npm test`
+* React
+* CometChat Pro JavaScript SDK
+* Firebase Cloud Messaging
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Running the demo locally
 
-### `npm run build`
+* Download the repository [here](https://github.com/cometchat-pro-tutorials/react-chat-push-notifications/archive/master.zip) or run `git clone https://github.com/cometchat-pro-tutorials/react-chat-push-notifications.git`
+* In the `react-chat-push-notifications` directory, run `npm install`
+* You need to sign up for CometChat PRO and create your application first
+* Create an ApiKey. You can use auth-only permission for this application
+* Create a Group from the dashboard
+* Enable Push Notification extension from `Extensions` menu
+* Create a `.env` file in the root folder of the project and paste the following content in it:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+REACT_APP_COMETCHAT_API_KEY=YOUR_API_KEY
+REACT_APP_COMETCHAT_APP_ID=YOUR_APP_ID
+REACT_APP_COMETCHAT_GUID=YOUR_GROUP_GUID
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Replace `YOUR_API_KEY`, `YOUR_APP_ID` and `YOUR_GROUP_GUID` with your API KEY, APP ID and GUID as obtained from your CometChat dashboard.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Register a Firebase account at http://firebase.google.com/ and create a new Firebase project
+* Add a new web application into your Firebase project
+* Click on the settings menu, then go to the general tab
+* Copy the Firebase config variable into `src/firebase.js` and `public/firebase-messaging-sw.js` (look at the comments there)
+* Then in Firebase settings, go to the Cloud Messaging tab. Copy the server key here
+* Go back into CometChat PRO dashboard, into Push Notification extension and click on `Actions -> Settings` Paste the FCM server key here
+* run `npm start`
 
-### `npm run eject`
+## Useful links
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* [📚Tutorial](https://prodocs.cometchat.com/docs)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Other examples
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* [ReactJS Chat app](https://github.com/cometchat-pro/javascript-reactjs-chat-app)
