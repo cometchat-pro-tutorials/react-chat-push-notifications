@@ -1,7 +1,13 @@
 importScripts('https://www.gstatic.com/firebasejs/6.4.0/firebase.js');
 
 var config = {
-  /* Config here */
+  apiKey: "AIzaSyBhkVOSvn4M6kkNPlMI7U3g9pXPqMeCNmc",
+  authDomain: "push-notifications-testi-217e6.firebaseapp.com",
+  databaseURL: "https://push-notifications-testi-217e6.firebaseio.com",
+  projectId: "push-notifications-testi-217e6",
+  storageBucket: "",
+  messagingSenderId: "375949858529",
+  appId: "1:375949858529:web:2ecd8afc2259b04a"
 };
 
 firebase.initializeApp(config);
