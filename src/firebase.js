@@ -59,19 +59,17 @@ messaging
   });
 
 messaging.onMessage(function(payload) {
-  console.log('Receiving foreground message');
+  console.log('Receiving foreground message', JSON.parse(payload.data.message));
   // Customize notification here
+  var sender = JSON.parse(payload.data.message);
+  console.log(sender.data.entities);
   var notificationTitle = 'New CometChat message';
   var notificationOptions = {
     body: payload.data.alert,
-    icon: payload.data.entities.sender.entity.avatar,
+    icon: sender.data.entities.sender.entity.avatar,
   };
 
-  var notification = new Notification(
-    notificationTitle,
-    notificationOptions
-  );
-
+  var notification = new Notification(notificationTitle, notificationOptions);
   notification.onclick = function(event) {
     notification.close();
     //handle click event onClick on Web Push Notification
