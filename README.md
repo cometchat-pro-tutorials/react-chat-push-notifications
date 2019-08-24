@@ -4,6 +4,10 @@ This sample app shows how to build a React chat application using CometChat Pro 
 
 SCREENSHOTS
 
+![Push Notification 1](screenshots/screenshot_1.png)
+![Push Notification 2](screenshots/screenshot_2.png)
+
+
 Jump straight into the code or read the accompanying step-by-step guide here on our blog.
 
 ## Technology
