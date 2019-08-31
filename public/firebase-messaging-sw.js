@@ -1,7 +1,7 @@
 importScripts("https://www.gstatic.com/firebasejs/6.4.0/firebase.js");
 
 var config = {
-  /* Config here */
+  // your firebase messagingSenderId here
 };
 
 firebase.initializeApp(config);

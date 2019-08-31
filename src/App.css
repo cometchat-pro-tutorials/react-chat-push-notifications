@@ -15,11 +15,7 @@ body {
   width: 100%;
   height: 100vh;
   -webkit-font-smoothing: antialiased;
-}
-
-h3 {
-  font-family: 'Abril Fatface';
-  margin-bottom: 20px;
+  background-color: #204cd2;
 }
 
 button {
@@ -47,6 +43,11 @@ button:hover {
   background-size: cover;
   padding-top: 100px;
   height: 100vh;
+}
+
+.login-page h3 {
+  font-family: 'Abril Fatface';
+  margin-bottom: 20px;
 }
 
 .login {
@@ -127,8 +128,6 @@ nav {
 .chat {
   flex: 1;
   padding-top: 40px;
-  background-color: #204cd2;
-  background-image: url(./assets/chat-background.svg);
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -317,11 +316,6 @@ nav {
   width: 30px;
 }
 
-.title {
-  font-family: 'Abril Fatface';
-  font-size: 32px;
-}
-
 nav {
   display: flex;
   align-items: center;
@@ -386,28 +380,6 @@ nav {
   background-color: #FFF;
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1)
-}
-
-.chat-bubble.is-user:before {
-  content: '';
-  position: absolute;
-  left: 100%;
-  width: 0;
-  height: 0;
-  border-top: 13px solid transparent;
-  border-left: 26px solid #1546DC;
-  border-bottom: 13px solid transparent;
-}
-
-.chat-bubble.is-other:before {
-  content: '';
-  position: absolute;
-  right: 100%;
-  width: 0;
-  height: 0;
-  border-top: 13px solid transparent;
-  border-right: 26px solid #FFF;
-  border-bottom: 13px solid transparent;
 }
 
 .message-send-icon {

@@ -3,7 +3,7 @@ import {CometChat} from '@cometchat-pro/chat';
 import MDSpinner from 'react-md-spinner';
 
 import emptyChatImage from '../assets/empty-state.svg';
-import logoImage from '../assets/logo.svg';
+import {updateFirebaseLoggedInUser} from './../firebase';
 
 const {REACT_APP_COMETCHAT_GUID} = process.env;
 
@@ -15,7 +15,6 @@ class Chat extends React.Component {
       chat: [],
       isLoading: true,
       user: props.location.state? props.location.state.user : '',
-      isSending: false,
     };
   }
 
@@ -26,7 +25,9 @@ class Chat extends React.Component {
   }
 
   componentDidMount() {
-    let messagesRequest = new CometChat.MessagesRequestBuilder()
+    updateFirebaseLoggedInUser(this.state.user.uid);
+
+    var messagesRequest = new CometChat.MessagesRequestBuilder()
       .setGUID(REACT_APP_COMETCHAT_GUID)
       .setLimit(100)
       .build();
@@ -47,7 +48,7 @@ class Chat extends React.Component {
       'MESSAGE_LISTENER_KEY',
       new CometChat.MessageListener({
         onTextMessageReceived: message => {
-          let {chat} = this.state;
+          var {chat} = this.state;
           console.log('Incoming Message Log', {message});
           chat.push(message);
           this.setState({
@@ -69,12 +70,10 @@ class Chat extends React.Component {
 
   handleSendMessage = event => {
     event.preventDefault();
-    this.setState({
-      isSending: true
-    });
+
     const {message} = this.state;
 
-    let textMessage = new CometChat.TextMessage(
+    var textMessage = new CometChat.TextMessage(
       REACT_APP_COMETCHAT_GUID,
       message,
       CometChat.MESSAGE_TYPE.TEXT,
@@ -96,7 +95,6 @@ class Chat extends React.Component {
     );
     this.setState({
       message: '',
-      isSending: false,
     });
   };
 
@@ -106,14 +104,13 @@ class Chat extends React.Component {
   }
 
   render() {
-    let {chat, message, isLoading, isSending, user} = this.state;
-    let chatContent = (
+    var {chat, message, isLoading, user} = this.state;
+    var chatContent = (
       <div className='loading-messages-container'>
         <MDSpinner size='100' />
         <span className='loading-text'>Loading Messages</span>
       </div>
     );
-    let sendButton = isSending? <div className="message-send-spinner"><MDSpinner size='30'/></div>: <div className="message-send-icon" onClick={this.handleSendMessage}><i className="fa fa-paper-plane fa-2x"></i></div>;
 
     if (!isLoading && !chat.length) {
       chatContent = (
@@ -133,8 +130,8 @@ class Chat extends React.Component {
     } 
     else if (!isLoading && chat.length) {
       chatContent = chat.map(chat => {
-        let isUser = user.uid === chat.sender.uid;
-        let renderName;
+        var isUser = user.uid === chat.sender.uid;
+        var renderName;
         if (isUser) {
           renderName = null;
         } else {
@@ -144,7 +141,7 @@ class Chat extends React.Component {
         }
         return (
           <div key={chat.id} className='chat-bubble-row' style={{flexDirection: isUser ? 'row-reverse' : 'row'}}>
-              <img src={chat.sender.avatar} alt='sender avatar' className='avatar' style={isUser ? {marginLeft: '30px'} : {marginRight: '30px'}} />
+              <img src={chat.sender.avatar} alt='sender avatar' className='avatar' style={isUser ? {marginLeft: '15px'} : {marginRight: '15px'}} />
               <div className={`chat-bubble ${isUser? 'is-user':'is-other'}`}>
                 {renderName}
                 <div className='message' style={{color: isUser ? '#FFF' : '#2D313F'}}>
@@ -158,20 +155,11 @@ class Chat extends React.Component {
 
     return (
       <div className='chat-container'>
-        <nav>
-            <div className="nav-left-section">
-                <img className="logo" src={logoImage} alt="logo" />
-                <span className="title">Chat</span>
-            </div>
-            <div className="nav-right-section">
-                <span className="welcome-message">Welcome <b>{ user.name }</b> </span> <img src={user.avatar} className="avatar" alt="user avatar" />
-            </div>
-        </nav>
         <div className='chat'>
           <div className='container'>
             <div className='chat-header'>
               <div className='active'>
-                <h5>#General</h5>
+                <h5>Chat</h5>
               </div>
             </div>
 
@@ -193,7 +181,6 @@ class Chat extends React.Component {
                           onChange={ event => this.setState({ message: event.target.value }) }
                           required
                         />
-                        {sendButton}
                       </div>
                     </form>
                   </div>
