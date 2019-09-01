@@ -26,6 +26,7 @@ Running the demo locally isn't tricky but please do make care to follow the inst
 * In the `react-chat-push-notifications` directory, run `npm install`
 
 ### Configure CometChat
+
 * Head to the [CometChat dsahboard](https://app.cometchat.com) (you'll need to create an account)
 * Create a new app
 * Head to the **Keys** tab and note your app ID and auto-generated full access key
@@ -41,15 +42,15 @@ Replace `YOUR_API_KEY` and `YOUR_APP_ID`with your API KEY, APP ID as obtained fr
 
 ### Configure Firebase
 
-
 * Register a [Firebase dashboard](https://console.firebase.google.com) (you'll need to create an account)
 * Create a new Firebase app
 * Add a new web application into your Firebase project
-* Click on the settings menu, then go to the General tab 
+* Click on the settings menu, then go to the General tab
 * Copy the Firebase config variable into `src/firebase.js` and `public/firebase-messaging-sw.js` (look at the comments there)
 * Then in Firebase settings, go to the Cloud Messaging tab. Copy the server key here
 * Go back into CometChat PRO dashboard, into Push Notification extension and click on `Actions -> Settings` Paste the FCM server key here
-* run `npm start`
+* For more detailed steps and screenshots, visit the documentation [here](https://prodocs.cometchat.com/docs/js-push-notifications)
+* Finally, run `npm start`
 
 ## Useful links
 
