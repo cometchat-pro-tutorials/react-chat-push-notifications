@@ -13,7 +13,7 @@ class Login extends React.Component {
 
   handleLogin = event => {
     event.preventDefault();
-    var { username } = this.state;
+    const { username } = this.state;
     if(!username){
       NotificationManager.error('Username must not be empty', 'Login Failed');
       return;
@@ -31,7 +31,7 @@ class Login extends React.Component {
         })
       },
       error => {
-        NotificationManager.error('Please try again', 'Login Failed');
+        NotificationManager.error('Username is not registered', 'Login Failed');
         this.setState({
           isLoading: false
         })
@@ -41,8 +41,8 @@ class Login extends React.Component {
 
 
   render() {
-    var {username, isLoading} = this.state;
-    var loadingSpinner = isLoading? <span className="fa fa-spin fa-spinner"/>  :'';
+    const {username, isLoading} = this.state;
+    const loadingSpinner = isLoading? <span className="fa fa-spin fa-spinner"/>  :'';
     return (
       <div className='login-page'>
         <div className='login'>

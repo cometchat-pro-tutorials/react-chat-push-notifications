@@ -18,16 +18,10 @@ class Chat extends React.Component {
     };
   }
 
-  componentWillMount(){
-    if(!this.props.location.state){
-      this.props.history.push('/login');
-    }
-  }
-
   componentDidMount() {
     updateFirebaseLoggedInUser(this.state.user.uid);
 
-    var messagesRequest = new CometChat.MessagesRequestBuilder()
+    const messagesRequest = new CometChat.MessagesRequestBuilder()
       .setGUID(REACT_APP_COMETCHAT_GUID)
       .setLimit(100)
       .build();
@@ -48,7 +42,7 @@ class Chat extends React.Component {
       'MESSAGE_LISTENER_KEY',
       new CometChat.MessageListener({
         onTextMessageReceived: message => {
-          var {chat} = this.state;
+          const {chat} = this.state;
           console.log('Incoming Message Log', {message});
           chat.push(message);
           this.setState({
@@ -63,17 +57,12 @@ class Chat extends React.Component {
     this.scrollToBottom();
   }
 
-  componentWillUnmount() {
-    console.log('removing listener')
-    CometChat.removeMessageListener('MESSAGE_LISTENER_KEY');
-  }
-
   handleSendMessage = event => {
     event.preventDefault();
 
     const {message} = this.state;
 
-    var textMessage = new CometChat.TextMessage(
+    const textMessage = new CometChat.TextMessage(
       REACT_APP_COMETCHAT_GUID,
       message,
       CometChat.MESSAGE_TYPE.TEXT,
@@ -104,8 +93,8 @@ class Chat extends React.Component {
   }
 
   render() {
-    var {chat, message, isLoading, user} = this.state;
-    var chatContent = (
+    const {chat, message, isLoading, user} = this.state;
+    let chatContent = (
       <div className='loading-messages-container'>
         <MDSpinner size='100' />
         <span className='loading-text'>Loading Messages</span>
@@ -120,7 +109,7 @@ class Chat extends React.Component {
           </div>
 
           <div>
-            <h2> No new message? </h2>
+            <h2> No messages yet </h2>
             <h6 className='empty-chat-sub-title'>
               Send your first message below.
             </h6>
@@ -130,8 +119,8 @@ class Chat extends React.Component {
     } 
     else if (!isLoading && chat.length) {
       chatContent = chat.map(chat => {
-        var isUser = user.uid === chat.sender.uid;
-        var renderName;
+        const isUser = user.uid === chat.sender.uid;
+        let renderName;
         if (isUser) {
           renderName = null;
         } else {
