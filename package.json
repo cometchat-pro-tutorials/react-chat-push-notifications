@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@cometchat-pro/chat": "^1.8.6",
-    "firebase": "^6.4.0",
     "react": "~16.8.0",
     "react-dom": "~16.8.0",
     "react-md-spinner": "^0.3.0",
